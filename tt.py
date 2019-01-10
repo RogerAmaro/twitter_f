@@ -13,17 +13,18 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 
 
 def get_followes_list():
-	followers=[]
-	for user in tweepy.Cursor(api.followers,screen_name="twitter").items():
-		followers.append(user.screen_name)
-		sleep(2)
-	return followers
+
+	with open("followers.txt", "+a") as file:
+		for user in tweepy.Cursor(api.followers,screen_name="Rogericson").items():
+			file.write(str(user.screen_name))
+			print(user.screen_name)
+			sleep(2)
 
 def get_friends_list():
-	friends=[]
 	with open("friends.txt", "+a") as file:
-		for user in tweepy.Cursor(api.friends,screen_name="twitter").items():
-			file.write(user)
+		for user in tweepy.Cursor(api.friends,screen_name="Rogericson").items():
+			file.write(str(user.screen_name))
+			print(user.screen_name)
 			sleep(2)
 
 def get_followers_by_id(id_number):
@@ -34,7 +35,5 @@ def check_friendship(user_a,user_b):
 	return api.exists_friendship(user_a,user_b)
 
 
-print(check_friendship("EnricoMoses"))
-	file = open("followers.txt", 'r')
 
-
+print(get_followes_list())
