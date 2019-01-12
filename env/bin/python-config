@@ -1,4 +1,4 @@
-#!/home/roger/twitter_bot/env/bin/python
+#!/home/roger/twitter_f/env/bin/python
 
 import sys
 import getopt

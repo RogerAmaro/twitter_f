@@ -16,14 +16,14 @@ def get_followes_list():
 
 	with open("followers.txt", "+a") as file:
 		for user in tweepy.Cursor(api.followers,screen_name="Rogericson").items():
-			file.write(str(user.screen_name))
+			file.write(str(user.screen_name)+"\n")
 			print(user.screen_name)
 			sleep(2)
 
 def get_friends_list():
 	with open("friends.txt", "+a") as file:
 		for user in tweepy.Cursor(api.friends,screen_name="Rogericson").items():
-			file.write(str(user.screen_name))
+			file.write(str(user.screen_name)+"\n")
 			print(user.screen_name)
 			sleep(2)
 
@@ -37,3 +37,5 @@ def check_friendship(user_a,user_b):
 
 
 print(get_followes_list())
+print(get_friends_list())
+
